@@ -1,0 +1,22 @@
+<table class="table table-responsive" style="color:white;" >
+  <thead>
+    <tr>
+      <th># Track Number</th>
+      <th>Track Name</th>
+      <th *ngIf="show_album_name">Album</th>
+      <th>Preview</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let track of items; let i = index;">
+      <td>
+        <h5 style="display:inline;"> # {{ i+1 }} </h5>
+        <img *ngIf="!image_url" [src]="track.album.images | NoImagePipe" [alt]="track.album.name" class="img img-thumbx1 ml-3">
+        <img *ngIf="image_url" [src]="image_url | NoImagePipe" [alt]="track.name" class="img img-thumbx1 ml-3">
+      </td>
+      <td> {{ track.name }} - Popularidad: {{ track.popularity }}% </td>
+      <td *ngIf="show_album_name"> {{ track.album.name }} </td>
+      <td><iframe [src]="track.uri | DOMSeguro" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></td>
+    </tr>
+  </tbody>
+</table>
