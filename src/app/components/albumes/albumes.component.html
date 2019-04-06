@@ -1,0 +1,20 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="container" *ngIf="!loading">
+  <div class="row">
+    <div class="col-md-2 text-center">
+      <img [src]="artist.images | NoImagePipe" alt="" class="img img-fluid img-thumb img-circle">
+    </div>
+    <div class="col text-center">
+      <h1>{{ artist.name}}</h1>
+        <hr />
+    </div>
+    <div class="col-md-2 text-right">
+      <a [routerLink]="['/artist',artist.id]" class="btn btn-outline-danger btn-block"><i class="fas fa-arrow-circle-left"></i> Top-10 <i class="fas fa-music"> </i></a>
+    </div>
+  </div>
+
+    <div class="row">
+      <app-tarjetas [items]=albumes [show_artists]=false [show_album_details]=true></app-tarjetas>
+    </div>
+</div>

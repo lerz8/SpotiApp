@@ -1,0 +1,12 @@
+  <div class="card-columns top50 animated fadeIn">
+    <div  class="card animated fadeIn" *ngFor="let item of items">
+      <img [src]="item.images | NoImagePipe " class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 style="color:black;" class="card-title bottom-5">   {{item.name}}  </h4>
+                  <hr style="border-color:grey !important; height:2px; padding:0px;" />
+                  <p class="card-text" *ngIf="show_artists"><a style="color:white; cursor:pointer;" class="badge badge-primary badgeArtista" *ngFor="let artista of item.artists" (click)="verArtista(artista.id);">{{artista.name}}   </a></p>
+                  <a *ngIf="(!show_artists) && (!show_album_details)" class="btn btn-primary btn-block"  (click)="verArtista(item.id);">Ver Artista</a>
+                  <a *ngIf="(!show_artists) && (show_album_details)" class="btn btn-primary btn-block"  (click)="verAlbum(item.id);">Ver Album</a>
+          </div>
+    </div>
+  </div>

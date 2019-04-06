@@ -1,0 +1,22 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="container" *ngIf="!loading">
+  <div class="row">
+    <div class="col-md-2 text-center">
+      <img [src]="artist.images | NoImagePipe" alt="" class="img img-fluid img-thumb img-circle">
+    </div>
+    <div class="col text-center">
+      <h1>{{ artist.name}}</h1>
+        <hr />
+      <a class="btn btn-outline-success btn-block" (click)=verAlbumes(artist.id)><i class="fas fa-music"></i> Ver Álbumes <i class="fas fa-compact-disc"></i></a>
+
+    </div>
+    <div class="col-md-2 text-right">
+      <a href='home' class="btn btn-outline-danger btn-block"><i class="fas fa-home"> </i> Home <i class="fas fa-arrow-circle-left"></i></a>
+    </div>
+  </div>
+    <h2 class="text-center top50">Top Track of {{ artist.name }}</h2>
+    <div class="row">
+      <app-tabla [items]=top_tracks></app-tabla>
+    </div>
+</div>
